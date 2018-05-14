@@ -56,29 +56,6 @@ public class AccountController extends BaseController {
     @Autowired
     private PasswordHash passwordHash;
 	
-	
-    @GetMapping("/")
-    @AuthPermissions(authName = AnnAuthType.anon)
-    public String index() {
-        return "redirect:/index";
-    }
-    @GetMapping("/index")
-    @AuthPermissions(authName = AnnAuthType.anon)
-    public String index(Model model) {
-        return "index";
-    }
-
-    @GetMapping("/login")
-    @CsrfToken(create = true)
-    @AuthPermissions(authName = AnnAuthType.anon)
-    public String login() {
-        logger.info("GET请求登录");
-        if (SecurityUtils.getSubject().isAuthenticated()) {
-            return "redirect:/index";
-        }
-        return "login";
-    }
-    
     @PostMapping("/account/register")
     @ResponseBody
     @AuthPermissions(authName = AnnAuthType.anon)
@@ -158,15 +135,6 @@ public class AccountController extends BaseController {
         return renderSuccess();
     }
     
-    /**
-     * 用户管理页
-     *
-     * @return
-     */
-    @GetMapping("/account/manager")
-    public String manager() {
-        return "admin/user/user";
-    }
     
     /**
      * 编辑用户页
@@ -189,26 +157,8 @@ public class AccountController extends BaseController {
     }
     
     
-    /**
-     * 添加用户页
-     *
-     * @return
-     */
-    @GetMapping("/account/addPage")
-    public String addPage() {
-        return "admin/user/userAdd";
-    }
 
     
-    /**
-     * 修改密码页
-     *
-     * @return
-     */
-    @GetMapping("/account/editPwdPage")
-    public String editPwdPage() {
-        return "admin/user/userEditPwd";
-    }
     
     @PostMapping(value="/account/add")
     @ResponseBody
