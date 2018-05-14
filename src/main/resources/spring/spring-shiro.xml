@@ -73,7 +73,6 @@
                 /webhooks = anon
                 /account/** = anon
                  /** = user  
-                <!--  /** = anon  -->
                
             </value>
         </property>
