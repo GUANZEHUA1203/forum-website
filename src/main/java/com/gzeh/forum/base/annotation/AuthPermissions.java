@@ -19,4 +19,8 @@ public @interface AuthPermissions {
      */  
 	AnnAuthType authName() default AnnAuthType.user;
 	
+	    /*
+	    验证签名
+	    */
+	boolean validateSign() default true;
 }  
